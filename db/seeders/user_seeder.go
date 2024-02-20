@@ -1,8 +1,9 @@
 package seeders
 
 import (
-	"echo-demo-project/models"
+	"fund-aplly-back/models"
 
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
@@ -36,7 +37,10 @@ func (userSeeder *UserSeeder) SetUsers() {
 			user.ID = uint(key)
 			user.Email = value["email"]
 			user.Name = value["name"]
-			user.Password = value["password"]
+
+			hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(value["password"]), bcrypt.DefaultCost)
+
+			user.Password = string(hashedPassword)
 			userSeeder.DB.Create(&user)
 		}
 	}

@@ -1,8 +1,8 @@
 package server
 
 import (
-	"echo-demo-project/config"
-	"echo-demo-project/db"
+	"fund-aplly-back/config"
+	"fund-aplly-back/db"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"

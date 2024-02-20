@@ -1,13 +1,14 @@
 package handlers
 
 import (
-	"echo-demo-project/models"
-	"echo-demo-project/repositories"
-	"echo-demo-project/requests"
-	"echo-demo-project/responses"
-	s "echo-demo-project/server"
-	postservice "echo-demo-project/services/post"
-	"echo-demo-project/services/token"
+	"fmt"
+	"fund-aplly-back/models"
+	"fund-aplly-back/repositories"
+	postRepo "fund-aplly-back/repositories"
+	"fund-aplly-back/requests"
+	"fund-aplly-back/responses"
+	s "fund-aplly-back/server"
+	token "fund-aplly-back/services"
 	"net/http"
 	"strconv"
 
@@ -56,7 +57,7 @@ func (p *PostHandlers) CreatePost(c echo.Context) error {
 		Content: createPostRequest.Content,
 		UserID:  id,
 	}
-	postService := postservice.NewPostService(p.server.DB)
+	postService := postRepo.NewPostRepository(p.server.DB)
 	postService.Create(&post)
 
 	return responses.MessageResponse(c, http.StatusCreated, "Post successfully created")
@@ -85,7 +86,7 @@ func (p *PostHandlers) DeletePost(c echo.Context) error {
 		return responses.ErrorResponse(c, http.StatusNotFound, "Post not found")
 	}
 
-	postService := postservice.NewPostService(p.server.DB)
+	postService := postRepo.NewPostRepository(p.server.DB)
 	postService.Delete(&post)
 
 	return responses.MessageResponse(c, http.StatusNoContent, "Post deleted successfully")
@@ -103,6 +104,7 @@ func (p *PostHandlers) DeletePost(c echo.Context) error {
 //	@Router			/posts [get]
 func (p *PostHandlers) GetPosts(c echo.Context) error {
 	var posts []models.Post
+	fmt.Println(1111)
 
 	postRepository := repositories.NewPostRepository(p.server.DB)
 	postRepository.GetPosts(&posts)
@@ -147,7 +149,7 @@ func (p *PostHandlers) UpdatePost(c echo.Context) error {
 		return responses.ErrorResponse(c, http.StatusNotFound, "Post not found")
 	}
 
-	postService := postservice.NewPostService(p.server.DB)
+	postService := postRepo.NewPostRepository(p.server.DB)
 	postService.Update(&post, updatePostRequest)
 
 	return responses.MessageResponse(c, http.StatusOK, "Post successfully updated")

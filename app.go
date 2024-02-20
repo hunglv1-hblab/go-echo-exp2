@@ -1,9 +1,9 @@
 package application
 
 import (
-	"echo-demo-project/config"
-	"echo-demo-project/server"
-	"echo-demo-project/server/routes"
+	"fund-aplly-back/config"
+	"fund-aplly-back/server"
+	"fund-aplly-back/server/routes"
 	"log"
 )
 

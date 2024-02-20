@@ -1,6 +1,6 @@
 package builders
 
-import "echo-demo-project/models"
+import "fund-aplly-back/models"
 
 type UserBuilder struct {
 	email    string

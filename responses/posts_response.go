@@ -1,7 +1,7 @@
 package responses
 
 import (
-	"echo-demo-project/models"
+	"fund-aplly-back/models"
 )
 
 type PostResponse struct {

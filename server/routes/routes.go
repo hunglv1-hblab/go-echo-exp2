@@ -1,10 +1,10 @@
 package routes
 
 import (
-	s "echo-demo-project/server"
-	"echo-demo-project/server/handlers"
-	"echo-demo-project/services/token"
 	"fmt"
+	s "fund-aplly-back/server"
+	"fund-aplly-back/server/handlers"
+	token "fund-aplly-back/services"
 
 	"github.com/golang-jwt/jwt/v5"
 	echojwt "github.com/labstack/echo-jwt/v4"

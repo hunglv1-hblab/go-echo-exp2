@@ -1,9 +1,10 @@
 package db
 
 import (
-	"echo-demo-project/config"
-	"echo-demo-project/db/seeders"
 	"fmt"
+	"fund-aplly-back/config"
+	"fund-aplly-back/db/seeders"
+	"fund-aplly-back/models/migrations"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -23,6 +24,7 @@ func Init(cfg *config.Config) *gorm.DB {
 	if err != nil {
 		panic(err.Error())
 	}
+	migrations.Migration(db)
 
 	userSeeder := seeders.NewUserSeeder(db)
 	userSeeder.SetUsers()

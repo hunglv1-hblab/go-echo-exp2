@@ -1,13 +1,13 @@
 package handlers
 
 import (
-	"echo-demo-project/models"
-	"echo-demo-project/repositories"
-	"echo-demo-project/requests"
-	"echo-demo-project/responses"
-	s "echo-demo-project/server"
-	tokenservice "echo-demo-project/services/token"
 	"fmt"
+	"fund-aplly-back/models"
+	"fund-aplly-back/repositories"
+	"fund-aplly-back/requests"
+	"fund-aplly-back/responses"
+	s "fund-aplly-back/server"
+	tokenservice "fund-aplly-back/services"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -42,12 +42,10 @@ func (authHandler *AuthHandler) Login(c echo.Context) error {
 	if err := c.Bind(loginRequest); err != nil {
 		return err
 	}
-
+	fmt.Println(loginRequest)
 	if err := loginRequest.Validate(); err != nil {
 		return responses.ErrorResponse(c, http.StatusBadRequest, "Required fields are empty or not valid")
 	}
-
-	fmt.Println(loginRequest)
 
 	user := models.User{}
 	userRepository := repositories.NewUserRepository(authHandler.server.DB)

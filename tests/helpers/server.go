@@ -1,8 +1,9 @@
 package helpers
 
 import (
-	"echo-demo-project/config"
-	"echo-demo-project/server"
+	"fund-aplly-back/config"
+	"fund-aplly-back/server"
+
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
 )

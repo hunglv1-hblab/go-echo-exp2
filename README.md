@@ -1,13 +1,3 @@
-<h1 align="center">Welcome to <span style="color:mediumseagreen">Echo boilerplate</span> 👋</h1>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/golang-v1.21-lightblue" height="25"/>
-  <img src="https://img.shields.io/badge/echo-v4.11-blue" height="25"/>
-  <img src="https://img.shields.io/badge/gorm-v1.25-green" height="25"/>
-  <img src="https://img.shields.io/badge/swagger-v1.16-orange" height="25"/>
-  <img src="https://img.shields.io/badge/gin--jwt-v2.9-yellow" height="25"/>
-  <img src="https://img.shields.io/badge/docker-support-darkgreeen" height="25"/>
-</p>
 
 It's an API Skeleton project based on Echo framework.
 Our aim is reducing development time on default features that you can meet very often when your work on API.
@@ -106,7 +96,7 @@ Next you need to run linter to check bugs ant errors
 
 Finally, you need to fix all problems manually or using autofixing (if it's supported by the linter)
 
-- `make lint-fix` 
+- `make lint-fix` 3
 
 
 ## Libraries

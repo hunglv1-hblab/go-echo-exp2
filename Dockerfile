@@ -1,5 +1,5 @@
 # Start from golang base image
-FROM golang:1.21.4-alpine3.18 as builder
+FROM golang:1.21.6-alpine3.18 as builder
 
 # Install git.
 # Git is required for fetching the dependencies.
@@ -17,5 +17,4 @@ RUN chmod +x /wait
 #Command to run the executable
 CMD swag init -g cmd/main.go\
   && /wait \
-  && go run migrations/entry.go --verbose \
   && CompileDaemon --build="go build cmd/main.go"  --command="./main" --color

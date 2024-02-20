@@ -1,12 +1,11 @@
 package handlers
 
 import (
-	"echo-demo-project/models"
-	"echo-demo-project/repositories"
-	"echo-demo-project/requests"
-	"echo-demo-project/responses"
-	s "echo-demo-project/server"
-	"echo-demo-project/services/user"
+	"fund-aplly-back/models"
+	"fund-aplly-back/repositories"
+	"fund-aplly-back/requests"
+	"fund-aplly-back/responses"
+	s "fund-aplly-back/server"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -51,7 +50,7 @@ func (registerHandler *RegisterHandler) Register(c echo.Context) error {
 		return responses.ErrorResponse(c, http.StatusBadRequest, "User already exists")
 	}
 
-	userService := user.NewUserService(registerHandler.server.DB)
+	userService := repositories.NewUserRepository(registerHandler.server.DB)
 	if err := userService.Register(registerRequest); err != nil {
 		return responses.ErrorResponse(c, http.StatusInternalServerError, "Server error")
 	}

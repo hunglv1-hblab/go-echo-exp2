@@ -2,25 +2,26 @@ package tests
 
 import (
 	"database/sql/driver"
-	"echo-demo-project/config"
-	"echo-demo-project/models"
-	"echo-demo-project/requests"
-	"echo-demo-project/responses"
-	"echo-demo-project/server"
-	"echo-demo-project/server/handlers"
-	"echo-demo-project/services/token"
-	"echo-demo-project/tests/helpers"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"fund-aplly-back/config"
+	"fund-aplly-back/models"
+	"fund-aplly-back/requests"
+	"fund-aplly-back/responses"
+	"fund-aplly-back/server"
+	"fund-aplly-back/server/handlers"
+	token "fund-aplly-back/services"
+	"fund-aplly-back/tests/helpers"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
-	"net/http/httptest"
-	"testing"
 )
 
 func TestWalkAuth(t *testing.T) {
