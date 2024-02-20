@@ -26,7 +26,7 @@ func NewAuthHandler(server *s.Server) *AuthHandler {
 
 // Login godoc
 //
-//	@Summary		Authenticate a user
+//	@Summary		Authenticate a user 444444
 //	@Description	Perform user login
 //	@ID				user-login
 //	@Tags			User Actions
@@ -46,6 +46,8 @@ func (authHandler *AuthHandler) Login(c echo.Context) error {
 	if err := loginRequest.Validate(); err != nil {
 		return responses.ErrorResponse(c, http.StatusBadRequest, "Required fields are empty or not valid")
 	}
+
+	fmt.Println(loginRequest)
 
 	user := models.User{}
 	userRepository := repositories.NewUserRepository(authHandler.server.DB)
