@@ -29,7 +29,7 @@ func ConfigureRoutes(server *s.Server) {
 
 	fmt.Println(server.Config.Auth.AccessSecret)
 
-	r := server.Echo.Group("")
+	r := server.Echo.Group("/api")
 	// Configure middleware with the custom claims type
 	config := echojwt.Config{
 		NewClaimsFunc: func(c echo.Context) jwt.Claims {
@@ -37,6 +37,7 @@ func ConfigureRoutes(server *s.Server) {
 		},
 		SigningKey: []byte(server.Config.Auth.AccessSecret),
 	}
+
 	r.Use(echojwt.WithConfig(config))
 
 	r.GET("/posts", postHandler.GetPosts)

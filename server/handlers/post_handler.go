@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"fund-aplly-back/models"
 	"fund-aplly-back/repositories"
 	postRepo "fund-aplly-back/repositories"
@@ -104,7 +103,6 @@ func (p *PostHandlers) DeletePost(c echo.Context) error {
 //	@Router			/posts [get]
 func (p *PostHandlers) GetPosts(c echo.Context) error {
 	var posts []models.Post
-	fmt.Println(1111)
 
 	postRepository := repositories.NewPostRepository(p.server.DB)
 	postRepository.GetPosts(&posts)
